@@ -1,6 +1,6 @@
 {
   "name": "@ascentms/fhir-works-on-aws-search-es",
-  "version": "3.12.1",
+  "version": "4.0.0",
   "description": "FHIR Works on AWS search Elasticsearch implementation",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
