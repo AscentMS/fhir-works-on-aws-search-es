@@ -10,7 +10,8 @@ import { DateSearchValue } from '../../FhirQueryParser';
 
 const SUPPORTED_MODIFIERS: string[] = [];
 
-// eslint-disable-next-line import/prefer-default-export
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const dateQuery = (compiledSearchParam: CompiledSearchParam, value: DateSearchValue, modifier?: string): any => {
     if (modifier && !SUPPORTED_MODIFIERS.includes(modifier)) {
         throw new InvalidSearchParameterError(`Unsupported date search modifier: ${modifier}`);

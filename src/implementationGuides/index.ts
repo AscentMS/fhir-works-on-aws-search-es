@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *  SPDX-License-Identifier: Apache-2.0
@@ -174,7 +175,6 @@ Original error message was: ${(e as any).message}`,
     return compiledSearchParams;
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const SearchImplementationGuides: ImplementationGuides = {
     compile,
 };

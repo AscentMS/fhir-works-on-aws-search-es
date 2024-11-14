@@ -11,12 +11,13 @@ import { QuantitySearchValue } from '../../FhirQueryParser';
 
 const SUPPORTED_MODIFIERS: string[] = [];
 
-// eslint-disable-next-line import/prefer-default-export
+
 export const quantityQuery = (
     compiledSearchParam: CompiledSearchParam,
     value: QuantitySearchValue,
     useKeywordSubFields: boolean,
     modifier?: string,
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any => {
     if (modifier && !SUPPORTED_MODIFIERS.includes(modifier)) {
         throw new InvalidSearchParameterError(`Unsupported quantity search modifier: ${modifier}`);

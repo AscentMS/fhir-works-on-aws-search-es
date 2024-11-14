@@ -36,7 +36,7 @@ const fhirVersionFromFiles = profilesRegistry.getFhirVersion();
 // We've been referring to the latest STU3 definitions (3.0.2) for a while but we still use the 3.0.1 string in our codebase
 const fhirVersion = fhirVersionFromFiles === '3.0.2' ? '3.0.1' : fhirVersionFromFiles;
 
-// eslint-disable-next-line import/no-dynamic-require
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const compiledSearchParameters: CompiledSearchParameter[] = require(`../../src/schema/compiledSearchParameters.${fhirVersion}.json`);
 
 console.log(`Generating mappings for FHIR version ${fhirVersion}`);

@@ -13,9 +13,10 @@ import { ReferenceSearchValue } from '../../FhirQueryParser/typeParsers/referenc
  * The URL is used to translate relative references into full URLs and vice versa
  * @param options.target - target resource types of the search parameter being evaluated.
  */
-// eslint-disable-next-line import/prefer-default-export
+
 export const referenceMatch = (
     searchValue: ReferenceSearchValue,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resourceValue: any,
     { fhirServiceBaseUrl, target = [] }: { fhirServiceBaseUrl?: string; target?: string[] },
 ): boolean => {
@@ -45,7 +46,7 @@ export const referenceMatch = (
         case 'unparseable':
             return reference === searchValue.rawValue;
         default:
-            // eslint-disable-next-line no-case-declarations
+             
             const exhaustiveCheck: never = searchValue;
             return exhaustiveCheck;
     }

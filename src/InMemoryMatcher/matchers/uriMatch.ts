@@ -6,7 +6,7 @@
 
 import { StringLikeSearchValue } from '../../FhirQueryParser';
 
-// eslint-disable-next-line import/prefer-default-export
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const uriMatch = (searchValue: StringLikeSearchValue, resourceValue: any): boolean => {
     return searchValue === resourceValue;
 };

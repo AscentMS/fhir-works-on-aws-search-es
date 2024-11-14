@@ -28,6 +28,7 @@ const logger = getComponentLogger();
 
 const readSearchParamsFile = (path: string) => {
     const data = JSON.parse(fs.readFileSync(path, { encoding: 'utf8' }));
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return data.entry.map((x: any) => x.resource);
 };
 

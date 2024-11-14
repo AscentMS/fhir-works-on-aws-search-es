@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *  SPDX-License-Identifier: Apache-2.0
@@ -57,7 +58,6 @@ const getAliasName = (resourceType: string, tenantId?: string) => {
     return `${lowercaseResourceType}-alias`;
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export class ElasticSearchService implements Search {
     private readonly esClient: Client;
 
@@ -156,8 +156,7 @@ export class ElasticSearchService implements Search {
 
             if (from + size > MAX_ES_WINDOW_SIZE) {
                 logger.info(
-                    `Search request is out of bound. Trying to access ${from} to ${
-                        from + size
+                    `Search request is out of bound. Trying to access ${from} to ${from + size
                     } which is outside of the max: ${MAX_ES_WINDOW_SIZE}`,
                 );
                 throw new InvalidSearchParameterError(
@@ -274,20 +273,20 @@ export class ElasticSearchService implements Search {
     }
 
     // Return translated chained parameters that can be used as normal search parameters
-    // eslint-disable-next-line class-methods-use-this
+
     private async getChainedParametersQuery(
         parsedChainParameters: ChainParameter[],
         request: TypeSearchRequest,
         filters: any[] = [],
-    ): Promise<{}> {
+    ): Promise<any> {
         let combinedChainedParameters = {};
 
-        // eslint-disable-next-line no-restricted-syntax
+
         for (const { chain, initialValue } of parsedChainParameters) {
             let stepValue = initialValue;
             let chainComplete = true;
             const lastChain: { resourceType: string; searchParam: string } = chain.pop()!;
-            // eslint-disable-next-line no-restricted-syntax
+
             for (const { resourceType, searchParam } of chain) {
                 const stepRequest: TypeSearchRequest = {
                     ...request,
@@ -318,7 +317,7 @@ export class ElasticSearchService implements Search {
                         },
                     },
                 };
-                // eslint-disable-next-line no-await-in-loop
+
                 const { total, hits } = await this.executeQuery(params, request);
                 if (total === 0) {
                     chainComplete = false;
@@ -338,7 +337,7 @@ export class ElasticSearchService implements Search {
         return combinedChainedParameters;
     }
 
-    // eslint-disable-next-line class-methods-use-this
+
     private async executeQuery(
         searchQuery: Query,
         request: TypeSearchRequest,
@@ -376,7 +375,7 @@ export class ElasticSearchService implements Search {
         }
     }
 
-    // eslint-disable-next-line class-methods-use-this
+
     private async executeQueries(searchQueries: Query[], request: TypeSearchRequest): Promise<{ hits: any[] }> {
         if (searchQueries.length === 0) {
             return {
@@ -502,7 +501,7 @@ export class ElasticSearchService implements Search {
 
         let resourcesToIterate = searchEntries;
         for (let i = 0; i < MAX_INCLUDE_ITERATIVE_DEPTH; i += 1) {
-            // eslint-disable-next-line no-await-in-loop
+
             const resourcesFound = await this.processSearchInclusions(
                 resourcesToIterate,
                 request,
@@ -538,7 +537,7 @@ export class ElasticSearchService implements Search {
         return result;
     }
 
-    // eslint-disable-next-line class-methods-use-this
+
     private createURL(host: string, query: any, resourceType?: string) {
         return URL.format({
             host,
@@ -547,7 +546,7 @@ export class ElasticSearchService implements Search {
         });
     }
 
-    // eslint-disable-next-line class-methods-use-this
+
     async globalSearch(request: GlobalSearchRequest): Promise<SearchResponse> {
         logger.info(request);
         this.assertValidTenancyMode(request.tenantId);
@@ -562,7 +561,7 @@ export class ElasticSearchService implements Search {
         if (inclusionSearchParams || chainedSearchParams || otherParams) {
             throw new InvalidSearchParameterError(
                 'Search string used for field criteria contains unsupported parameter, please remove: ' +
-                    '_revinclude, _include, _sort, _count and chained parameters',
+                '_revinclude, _include, _sort, _count and chained parameters',
             );
         }
     }

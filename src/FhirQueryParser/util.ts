@@ -20,6 +20,7 @@ export const parseSearchModifiers = (
     return { parameterName: modifier[0], modifier: modifier[1] };
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const normalizeQueryParams = (queryParams: any): { [key: string]: string[] } => {
     const normalizedQueryParams: { [key: string]: string[] } = {};
 

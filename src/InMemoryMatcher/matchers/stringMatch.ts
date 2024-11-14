@@ -18,7 +18,7 @@ function isUsableType(x: unknown): x is string | Record<string, unknown> {
     return x !== null && (typeof x === 'string' || typeof x === 'object');
 }
 
-// eslint-disable-next-line import/prefer-default-export
+
 export const stringMatch = (
     compiledSearchParam: CompiledSearchParam,
     value: StringLikeSearchValue,

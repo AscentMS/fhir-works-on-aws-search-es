@@ -1,4 +1,5 @@
-/* eslint-disable no-await-in-loop,no-restricted-syntax */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 /*
  *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *  SPDX-License-Identifier: Apache-2.0
@@ -10,7 +11,6 @@ import { OpensearchClient } from '../elasticSearch';
 
 const toIndexName = (resourceType: string) => resourceType.toLowerCase();
 
-// eslint-disable-next-line import/prefer-default-export
 export class SearchMappingsManager {
     private readonly searchMappings: {
         [resourceType: string]: any;

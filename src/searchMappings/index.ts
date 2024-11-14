@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *  SPDX-License-Identifier: Apache-2.0
@@ -18,7 +19,6 @@ type SearchMappingsBase = {
  * Get the search mappings for ALL resource types
  * @param fhirVersion
  */
-// eslint-disable-next-line import/prefer-default-export
 export const getSearchMappings = (
     fhirVersion: string,
 ): {

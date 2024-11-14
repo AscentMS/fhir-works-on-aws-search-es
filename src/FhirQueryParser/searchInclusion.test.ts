@@ -55,6 +55,7 @@ describe('inclusionParameterFromString', () => {
 
 describe('parseInclusionParams', () => {
     test('No inclusion Params', () => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const expected: any[] = [];
         expect(parseInclusionParams(fhirSearchParametersRegistry, '_include', [])).toEqual(expected);
     });

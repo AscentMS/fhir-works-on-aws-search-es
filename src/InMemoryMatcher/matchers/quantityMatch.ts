@@ -2,7 +2,8 @@ import { isEmpty } from 'lodash';
 import { QuantitySearchValue } from '../../FhirQueryParser';
 import { applyPrefixRulesToRange, compareNumberToRange } from './common/numericComparison';
 
-// eslint-disable-next-line import/prefer-default-export
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const quantityMatch = (value: QuantitySearchValue, resourceValue: any): boolean => {
     const { prefix, implicitRange, number, system, code } = value;
 

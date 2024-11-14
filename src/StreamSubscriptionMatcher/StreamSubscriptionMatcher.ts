@@ -29,9 +29,9 @@ const ACTIVE_SUBSCRIPTIONS_CACHE_REFRESH_TIMEOUT = 60_000;
 
 const logger = getComponentLogger();
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const matchSubscription = (subscription: Subscription, resource: Record<string, any>): boolean => {
     return (
-        // eslint-disable-next-line no-underscore-dangle
         subscription.tenantId === resource._tenantId &&
         matchParsedFhirQueryParams(subscription.parsedCriteria, resource)
     );
@@ -40,7 +40,7 @@ const matchSubscription = (subscription: Subscription, resource: Record<string, 
 /**
  * This class matches DynamoDBStreamEvents against the active Subscriptions and publishes SNS messages for each match.
  */
-// eslint-disable-next-line import/prefer-default-export
+
 export class StreamSubscriptionMatcher {
     private readonly fhirSearchParametersRegistry: FHIRSearchParametersRegistry;
 
@@ -64,6 +64,7 @@ export class StreamSubscriptionMatcher {
         {
             fhirVersion = '4.0.1',
             compiledImplementationGuides,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         }: { fhirVersion?: FhirVersion; compiledImplementationGuides?: any } = {},
     ) {
         this.persistence = persistence;

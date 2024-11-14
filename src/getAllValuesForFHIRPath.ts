@@ -4,7 +4,6 @@
  *
  */
 
-// eslint-disable-next-line import/prefer-default-export
 import { isPresent } from './tsUtils';
 
 /**
@@ -20,10 +19,11 @@ import { isPresent } from './tsUtils';
  *
  * @return array of all values located in the given path.
  */
-// eslint-disable-next-line import/prefer-default-export
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getAllValuesForFHIRPath = (resource: any, path: string): any[] => {
     const pathParts = path.split('.');
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let values: any[] = [resource];
     let pathTraversed = '';
 

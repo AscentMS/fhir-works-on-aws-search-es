@@ -10,11 +10,12 @@ import { NumberSearchValue } from '../../FhirQueryParser';
 
 const SUPPORTED_MODIFIERS: string[] = [];
 
-// eslint-disable-next-line import/prefer-default-export
+
 export const numberQuery = (
     compiledSearchParam: CompiledSearchParam,
     value: NumberSearchValue,
     modifier?: string,
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any => {
     if (modifier && !SUPPORTED_MODIFIERS.includes(modifier)) {
         throw new InvalidSearchParameterError(`Unsupported number search modifier: ${modifier}`);

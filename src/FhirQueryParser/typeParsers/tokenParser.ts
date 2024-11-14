@@ -12,7 +12,7 @@ export interface TokenSearchValue {
     explicitNoSystemProperty: boolean;
 }
 
-// eslint-disable-next-line import/prefer-default-export
+
 export const parseTokenSearchValue = (param: string): TokenSearchValue => {
     if (param === '|') {
         throw new InvalidSearchParameterError(`Invalid token search parameter: ${param}`);

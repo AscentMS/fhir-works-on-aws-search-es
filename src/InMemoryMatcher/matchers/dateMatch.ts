@@ -9,7 +9,8 @@ import { DateSearchValue } from '../../FhirQueryParser';
 
 import { compareNumberToRange, compareRanges } from './common/numericComparison';
 
-// eslint-disable-next-line import/prefer-default-export
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const dateMatch = (searchValue: DateSearchValue, resourceValue: any): boolean => {
     const { prefix, range } = searchValue;
     const numericSearchRange = { start: range.start.getTime(), end: range.end.getTime() };

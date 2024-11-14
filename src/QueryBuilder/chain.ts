@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/prefer-default-export
+
 import { InvalidSearchParameterError } from '@ascentms/fhir-works-on-aws-interface';
 import { FHIRSearchParametersRegistry, SearchParam } from '../FHIRSearchParametersRegistry';
 import { COMPILED_CONDITION_OPERATOR_RESOLVE, NON_SEARCHABLE_PARAMETERS } from '../constants';
@@ -23,7 +23,7 @@ export function getUniqueTarget(fhirSearchParam: SearchParam): string | undefine
         // condition's format is defined in `../FHIRSearchParamtersRegistry/index.ts`
         if (compiled.condition && compiled.condition[1] === COMPILED_CONDITION_OPERATOR_RESOLVE) {
             if (!target) {
-                // eslint-disable-next-line prefer-destructuring
+                 
                 target = compiled.condition[2];
             } else if (target !== compiled.condition[2]) {
                 // case where two compiled resolve to different resource types
@@ -44,6 +44,7 @@ export function getUniqueTarget(fhirSearchParam: SearchParam): string | undefine
 const parseChainedParameters = (
     fhirSearchParametersRegistry: FHIRSearchParametersRegistry,
     resourceType: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     queryParams: any,
 ): ChainParameter[] => {
     const parsedChainedParam: ChainParameter[] = Object.entries(normalizeQueryParams(queryParams))

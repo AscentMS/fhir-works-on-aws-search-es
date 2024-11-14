@@ -7,7 +7,6 @@
 /**
  * This mappings will be applied to ALL resource types (they override any existing mappings).
  */
-// eslint-disable-next-line import/prefer-default-export
 export const CUSTOM_MAPPINGS = {
     id: {
         type: 'keyword',

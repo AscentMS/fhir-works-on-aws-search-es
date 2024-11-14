@@ -11,12 +11,13 @@ import { TokenSearchValue } from '../../FhirQueryParser';
 const FIELDS_WITHOUT_KEYWORD = ['id'];
 const SUPPORTED_MODIFIERS: string[] = [];
 
-// eslint-disable-next-line import/prefer-default-export
+
 export function tokenQuery(
     compiled: CompiledSearchParam,
     value: TokenSearchValue,
     useKeywordSubFields: boolean,
     modifier?: string,
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any {
     if (modifier && !SUPPORTED_MODIFIERS.includes(modifier)) {
         throw new InvalidSearchParameterError(`Unsupported token search modifier: ${modifier}`);

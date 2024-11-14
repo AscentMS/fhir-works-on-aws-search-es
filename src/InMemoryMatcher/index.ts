@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *  SPDX-License-Identifier: Apache-2.0
@@ -56,7 +57,7 @@ const typeMatcher = (
         case 'uri':
             return uriMatch(searchValue as StringLikeSearchValue, resourceValue);
         default:
-            // eslint-disable-next-line no-case-declarations
+             
             const exhaustiveCheck: never = searchParam.type;
             return exhaustiveCheck;
     }
@@ -114,7 +115,7 @@ function evaluateQueryParam(
  * @param options.fhirServiceBaseUrl - URL of the FHIR served where the FHIR resource is located.
  * The URL is used to translate relative references into full URLs and vice versa
  */
-// eslint-disable-next-line import/prefer-default-export
+
 export function matchParsedFhirQueryParams(
     parsedFhirQueryParams: ParsedFhirQueryParams,
     resource: any,

@@ -32,11 +32,12 @@ const elasticsearchSort = (field: string, order: 'asc' | 'desc') => ({
     },
 });
 
-// eslint-disable-next-line import/prefer-default-export
+
 export const buildSortClause = (
     fhirSearchParametersRegistry: FHIRSearchParametersRegistry,
     resourceType: string,
     sortQueryParam: string | string[],
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any[] => {
     if (Array.isArray(sortQueryParam)) {
         throw new InvalidSearchParameterError('_sort parameter cannot be used multiple times on a search query');

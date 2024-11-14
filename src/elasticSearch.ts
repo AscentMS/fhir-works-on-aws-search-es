@@ -14,7 +14,7 @@ if (IS_OFFLINE && IS_OFFLINE === 'true') {
     esDomainEndpoint = process.env.OFFLINE_ELASTICSEARCH_DOMAIN_ENDPOINT || 'https://fake-es-endpoint.com';
 }
 
-// eslint-disable-next-line import/prefer-default-export
+
 export const OpensearchClient = new Client({
     ...AwsSigv4Signer({
         region: process.env.AWS_REGION || 'eu-west-2',

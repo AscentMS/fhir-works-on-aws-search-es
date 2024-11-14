@@ -9,7 +9,7 @@ import { ReferenceSearchValue } from '../../FhirQueryParser/typeParsers/referenc
 
 const SUPPORTED_MODIFIERS: string[] = [];
 
-// eslint-disable-next-line import/prefer-default-export
+
 export function referenceQuery(
     compiled: CompiledSearchParam,
     value: ReferenceSearchValue,
@@ -18,6 +18,7 @@ export function referenceQuery(
     searchParamName: string,
     target: string[] = [],
     modifier?: string,
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any {
     if (modifier && !SUPPORTED_MODIFIERS.includes(modifier)) {
         throw new InvalidSearchParameterError(`Unsupported reference search modifier: ${modifier}`);
@@ -44,7 +45,7 @@ export function referenceQuery(
             references.push(value.rawValue);
             break;
         default:
-            // eslint-disable-next-line no-case-declarations
+             
             const exhaustiveCheck: never = value;
             return exhaustiveCheck;
     }

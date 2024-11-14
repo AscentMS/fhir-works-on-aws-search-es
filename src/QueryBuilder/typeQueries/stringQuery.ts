@@ -12,7 +12,8 @@ const escapeQueryString = (string: string) => {
 
 const SUPPORTED_MODIFIERS: string[] = ['exact', 'contains'];
 
-// eslint-disable-next-line import/prefer-default-export
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function stringQuery(compiled: CompiledSearchParam, value: string, modifier?: string): any {
     if (modifier && !SUPPORTED_MODIFIERS.includes(modifier)) {
         throw new InvalidSearchParameterError(`Unsupported string search modifier: ${modifier}`);

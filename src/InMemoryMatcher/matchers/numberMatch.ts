@@ -7,7 +7,8 @@
 import { NumberSearchValue } from '../../FhirQueryParser';
 import { applyPrefixRulesToRange, compareNumberToRange } from './common/numericComparison';
 
-// eslint-disable-next-line import/prefer-default-export
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const numberMatch = (value: NumberSearchValue, resourceValue: any): boolean => {
     const { prefix, implicitRange, number } = value;
 

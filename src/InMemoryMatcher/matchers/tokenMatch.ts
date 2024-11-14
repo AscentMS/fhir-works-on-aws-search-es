@@ -6,13 +6,15 @@
 
 import { TokenSearchValue } from '../../FhirQueryParser';
 
-// eslint-disable-next-line import/prefer-default-export
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const tokenMatch = (searchValue: TokenSearchValue, resourceValue: any): boolean => {
     const { system, code, explicitNoSystemProperty } = searchValue;
 
     // CodeableConcept may have several Codings
     if (resourceValue?.coding) {
         if (Array.isArray(resourceValue?.coding)) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             return resourceValue?.coding.some((coding: any) => tokenMatch(searchValue, coding));
         }
         return tokenMatch(searchValue, resourceValue?.coding);

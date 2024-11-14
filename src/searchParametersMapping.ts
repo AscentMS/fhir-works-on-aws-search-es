@@ -11,7 +11,6 @@ const hasMapping = (searchParameter: string): searchParameter is keyof typeof SE
     return searchParameter in SEARCH_PARAMETER_TO_DOCUMENT_FIELD;
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const getDocumentField = (searchParameter: string) => {
     if (hasMapping(searchParameter)) {
         return SEARCH_PARAMETER_TO_DOCUMENT_FIELD[searchParameter];

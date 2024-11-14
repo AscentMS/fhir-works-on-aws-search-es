@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *  SPDX-License-Identifier: Apache-2.0
@@ -132,7 +133,7 @@ function searchParamQuery(
     };
 }
 
-// eslint-disable-next-line import/prefer-default-export
+
 export const buildQueryForAllSearchParameters = (
     fhirSearchParametersRegistry: FHIRSearchParametersRegistry,
     request: TypeSearchRequest,

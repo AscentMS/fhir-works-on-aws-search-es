@@ -16,7 +16,7 @@ interface FhirNumber {
 
 const NUMBER_REGEX = /^(?<sign>[+-])?(?<whole>\d+)(\.(?<decimals>\d+))?([eE](?<exp>[+-]?\d+))?$/;
 
-// eslint-disable-next-line import/prefer-default-export
+
 export const parseNumber = (numberString: string): FhirNumber => {
     const match = numberString.match(NUMBER_REGEX);
     if (match === null) {

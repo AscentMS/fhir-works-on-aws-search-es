@@ -39,6 +39,7 @@ export const compareNumberToRange = (prefix: string, searchParamRange: Range, re
 };
 
 // See the interpretation of prefixes when applied to ranges: https://www.hl7.org/fhir/search.html#prefix. It can be counterintuitive at first
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const compareRanges = (prefix: string, searchParamRange: Range, resourceRange: Range): any => {
     const { start, end } = searchParamRange;
     const resourceStart = resourceRange.start;

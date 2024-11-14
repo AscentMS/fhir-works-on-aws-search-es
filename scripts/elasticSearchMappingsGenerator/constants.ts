@@ -32,6 +32,7 @@ export const EXTENSION_FIELDS = [
 /**
  * There are some fields from the foundational FHIR resources for which it's way simpler to just inspect the type manually
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const EDGE_CASES: any = {
     StructureDefinition: {
         // All 3 use peculiar interactions between ElementDefinition and Element

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // import each from 'jest-each';
 import {
     getIncludeReferencesFromResources,

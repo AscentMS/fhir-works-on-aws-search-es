@@ -36,6 +36,7 @@ describe('SearchMappingsManager', () => {
             searchClient: new Client({
                 node: 'https://fake-es-endpoint.com',
                 Connection: searchMock.getConnection(),
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             }) as any,
         });
 
@@ -107,6 +108,7 @@ describe('SearchMappingsManager', () => {
             searchClient: new Client({
                 node: 'https://fake-es-endpoint.com',
                 Connection: searchMock.getConnection(),
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             }) as any,
         });
 
@@ -125,7 +127,6 @@ describe('SearchMappingsManager', () => {
                 path: '/patient',
             },
             () =>
-                // @ts-ignore
                 new errors.ResponseError({
                     headers: undefined,
                     statusCode: 404,
@@ -135,7 +136,7 @@ describe('SearchMappingsManager', () => {
                             type: 'index_not_found_exception',
                         },
                     },
-                }),
+                } as never),
         );
 
         searchMock.add(

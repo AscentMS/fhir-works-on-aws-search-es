@@ -6,11 +6,11 @@
 /**
  * Periodically calls an async fn and keeps its latest response value cached.
  */
-// eslint-disable-next-line import/prefer-default-export
+
 export class AsyncRefreshCache<T> {
     private values: Promise<T>;
 
-    // eslint-disable-next-line no-undef
+     
     private readonly interval: NodeJS.Timeout;
 
     /**

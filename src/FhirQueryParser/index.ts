@@ -166,7 +166,7 @@ const parseSearchQueryParam = (searchParam: SearchParam, rawSearchValue: string)
                 parsedSearchValues: orSearchValues.map(parseStringLikeSearchValue),
             };
         default:
-            // eslint-disable-next-line no-case-declarations
+             
             const exhaustiveCheck: never = searchParam.type;
             return exhaustiveCheck;
     }
@@ -189,6 +189,7 @@ const validateModifiers = ({ type, modifier }: QueryParam): void => {
 export const parseQuery = (
     fhirSearchParametersRegistry: FHIRSearchParametersRegistry,
     resourceType: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     queryParams: any,
 ): ParsedFhirQueryParams => {
     const normalizedQueryParams: { [name: string]: string[] } = normalizeQueryParams(queryParams);

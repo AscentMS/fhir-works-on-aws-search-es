@@ -201,6 +201,7 @@ const humanNameMapping = {
     },
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const fhirTypeMapping: Record<string, any> = {
     Address: addressMapping,
     Age: quantityMapping,
@@ -239,9 +240,9 @@ const fhirTypeMapping: Record<string, any> = {
     url: STRING_MAPPING,
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export function fhirToESMapping(searchField: { field: string; type: string }): {
     field: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mapping: any;
 } {
     if (!(searchField.type in fhirTypeMapping)) {

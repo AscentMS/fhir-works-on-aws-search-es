@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DynamoDBRecord, DynamoDBStreamEvent } from 'aws-lambda/trigger/dynamodb-stream';
 import { FHIRSearchParametersRegistry } from '../FHIRSearchParametersRegistry';
 import { ParsedFhirQueryParams, parseQueryString } from '../FhirQueryParser';
@@ -37,14 +38,12 @@ export const buildNotification = (
     resource: Record<string, any>,
 ): SubscriptionNotification => ({
     subscriptionId: subscription.subscriptionId,
-    // eslint-disable-next-line no-underscore-dangle
     tenantId: resource._tenantId,
     channelType: subscription.channelType,
     channelHeader: subscription.channelHeader,
     channelPayload: subscription.channelPayload,
     endpoint: subscription.endpoint,
     matchedResource: {
-        // eslint-disable-next-line no-underscore-dangle
         id: resource._tenantId ? resource._id : resource.id,
         resourceType: resource.resourceType,
         lastUpdated: resource.meta?.lastUpdated,
@@ -87,9 +86,9 @@ export const parseSubscription = (
         channelPayload: resource?.channel?.payload,
         endpoint: resource?.channel?.endpoint,
         parsedCriteria: parseQueryString(fhirSearchParametersRegistry, resource?.criteria),
-        // eslint-disable-next-line no-underscore-dangle
+
         subscriptionId: resource._tenantId ? resource._id : resource.id,
-        // eslint-disable-next-line no-underscore-dangle
+
         tenantId: resource?._tenantId,
     };
 };

@@ -74,7 +74,7 @@ const toCapabilityStatement = (searchParam: SearchParam) => ({
 /**
  * This class is the single authority over the supported FHIR SearchParameters and their definitions
  */
-// eslint-disable-next-line import/prefer-default-export
+
 export class FHIRSearchParametersRegistry {
     private readonly includeMap: {
         [resourceType: string]: SearchParam[];
@@ -92,6 +92,7 @@ export class FHIRSearchParametersRegistry {
 
     private readonly capabilityStatement: SearchCapabilityStatement;
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     constructor(fhirVersion: FhirVersion, compiledImplementationGuides?: any[]) {
         let compiledSearchParams: SearchParam[];
         if (fhirVersion === '4.0.1') {
@@ -117,7 +118,7 @@ export class FHIRSearchParametersRegistry {
                 this.includeMap[searchParam.base] = this.includeMap[searchParam.base] ?? [];
                 this.includeMap[searchParam.base].push(searchParam);
 
-                // eslint-disable-next-line no-unused-expressions
+                 
                 searchParam.target?.forEach((target) => {
                     this.revincludeMap[target] = this.revincludeMap[target] ?? [];
                     this.revincludeMap[target].push(searchParam);
