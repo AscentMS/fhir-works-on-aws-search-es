@@ -1,5 +1,5 @@
 import { uniq } from 'lodash';
-import { InvalidSearchParameterError } from 'fhir-works-on-aws-interface';
+import { InvalidSearchParameterError } from '@ascentms/fhir-works-on-aws-interface';
 import { InclusionSearchParameter, WildcardInclusionSearchParameter } from '../searchInclusions';
 import { FHIRSearchParametersRegistry } from '../FHIRSearchParametersRegistry';
 

@@ -4,7 +4,7 @@
  */
 
 import { isEmpty } from 'lodash';
-import { TypeSearchRequest } from 'fhir-works-on-aws-interface';
+import { TypeSearchRequest } from '@ascentms/fhir-works-on-aws-interface';
 import { CompiledSearchParam, FHIRSearchParametersRegistry, SearchParam } from '../FHIRSearchParametersRegistry';
 import { stringQuery } from './typeQueries/stringQuery';
 import { dateQuery } from './typeQueries/dateQuery';

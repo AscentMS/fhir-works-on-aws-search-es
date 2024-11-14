@@ -5,8 +5,8 @@
  *
  */
 
-import { Client } from '@elastic/elasticsearch';
-import { ElasticSearch } from '../elasticSearch';
+import { Client } from '@opensearch-project/opensearch';
+import { OpensearchClient } from '../elasticSearch';
 
 const toIndexName = (resourceType: string) => resourceType.toLowerCase();
 
@@ -38,7 +38,7 @@ export class SearchMappingsManager {
     constructor({
         searchMappings,
         numberOfShards,
-        searchClient = ElasticSearch,
+        searchClient = OpensearchClient,
         ignoreMappingsErrorsForExistingIndices = false,
     }: {
         searchMappings: { [resourceType: string]: any };
@@ -89,16 +89,16 @@ export class SearchMappingsManager {
     }
 
     async indexExists(resourceType: string): Promise<boolean> {
-        return (
-            await this.searchClient.indices.exists({
+        const exists = await this.searchClient.indices.exists({
                 index: toIndexName(resourceType),
-            })
-        ).body;
+            });
+        
+        return exists as unknown as boolean;
     }
 
     async updateMapping(resourceType: string, mapping: any) {
         console.log(`sending putMapping request for: ${resourceType}`);
-        return this.searchClient.indices.put_mapping({
+        return this.searchClient.indices.putMapping({
             index: toIndexName(resourceType),
             body: mapping,
         });

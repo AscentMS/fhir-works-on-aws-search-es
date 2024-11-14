@@ -15,29 +15,29 @@ describe('quantityQuery', () => {
         test('5.4|http://unitsofmeasure.org|mg', () => {
             expect(quantityQuery(quantityParam, parseQuantitySearchValue('5.4|http://unitsofmeasure.org|mg'), true))
                 .toMatchInlineSnapshot(`
-                Object {
-                  "bool": Object {
-                    "must": Array [
-                      Object {
-                        "range": Object {
-                          "valueQuantity.value": Object {
+                {
+                  "bool": {
+                    "must": [
+                      {
+                        "range": {
+                          "valueQuantity.value": {
                             "gte": 5.3500000000000005,
                             "lte": 5.45,
                           },
                         },
                       },
-                      Object {
-                        "multi_match": Object {
-                          "fields": Array [
+                      {
+                        "multi_match": {
+                          "fields": [
                             "valueQuantity.code.keyword",
                           ],
                           "lenient": true,
                           "query": "mg",
                         },
                       },
-                      Object {
-                        "multi_match": Object {
-                          "fields": Array [
+                      {
+                        "multi_match": {
+                          "fields": [
                             "valueQuantity.system.keyword",
                           ],
                           "lenient": true,
@@ -52,29 +52,29 @@ describe('quantityQuery', () => {
         test('5.40e-3|http://unitsofmeasure.org|g', () => {
             expect(quantityQuery(quantityParam, parseQuantitySearchValue('5.40e-3|http://unitsofmeasure.org|g'), true))
                 .toMatchInlineSnapshot(`
-                Object {
-                  "bool": Object {
-                    "must": Array [
-                      Object {
-                        "range": Object {
-                          "valueQuantity.value": Object {
+                {
+                  "bool": {
+                    "must": [
+                      {
+                        "range": {
+                          "valueQuantity.value": {
                             "gte": 0.0053950000000000005,
                             "lte": 0.005405,
                           },
                         },
                       },
-                      Object {
-                        "multi_match": Object {
-                          "fields": Array [
+                      {
+                        "multi_match": {
+                          "fields": [
                             "valueQuantity.code.keyword",
                           ],
                           "lenient": true,
                           "query": "g",
                         },
                       },
-                      Object {
-                        "multi_match": Object {
-                          "fields": Array [
+                      {
+                        "multi_match": {
+                          "fields": [
                             "valueQuantity.system.keyword",
                           ],
                           "lenient": true,
@@ -88,20 +88,20 @@ describe('quantityQuery', () => {
         });
         test('5.4||mg', () => {
             expect(quantityQuery(quantityParam, parseQuantitySearchValue('5.4||mg'), true)).toMatchInlineSnapshot(`
-                Object {
-                  "bool": Object {
-                    "must": Array [
-                      Object {
-                        "range": Object {
-                          "valueQuantity.value": Object {
+                {
+                  "bool": {
+                    "must": [
+                      {
+                        "range": {
+                          "valueQuantity.value": {
                             "gte": 5.3500000000000005,
                             "lte": 5.45,
                           },
                         },
                       },
-                      Object {
-                        "multi_match": Object {
-                          "fields": Array [
+                      {
+                        "multi_match": {
+                          "fields": [
                             "valueQuantity.code.keyword",
                             "valueQuantity.unit.keyword",
                           ],
@@ -116,9 +116,9 @@ describe('quantityQuery', () => {
         });
         test('5.4', () => {
             expect(quantityQuery(quantityParam, parseQuantitySearchValue('5.4'), true)).toMatchInlineSnapshot(`
-                Object {
-                  "range": Object {
-                    "valueQuantity.value": Object {
+                {
+                  "range": {
+                    "valueQuantity.value": {
                       "gte": 5.3500000000000005,
                       "lte": 5.45,
                     },
@@ -129,28 +129,28 @@ describe('quantityQuery', () => {
         test('le5.4|http://unitsofmeasure.org|mg', () => {
             expect(quantityQuery(quantityParam, parseQuantitySearchValue('le5.4|http://unitsofmeasure.org|mg'), true))
                 .toMatchInlineSnapshot(`
-                Object {
-                  "bool": Object {
-                    "must": Array [
-                      Object {
-                        "range": Object {
-                          "valueQuantity.value": Object {
+                {
+                  "bool": {
+                    "must": [
+                      {
+                        "range": {
+                          "valueQuantity.value": {
                             "lte": 5.4,
                           },
                         },
                       },
-                      Object {
-                        "multi_match": Object {
-                          "fields": Array [
+                      {
+                        "multi_match": {
+                          "fields": [
                             "valueQuantity.code.keyword",
                           ],
                           "lenient": true,
                           "query": "mg",
                         },
                       },
-                      Object {
-                        "multi_match": Object {
-                          "fields": Array [
+                      {
+                        "multi_match": {
+                          "fields": [
                             "valueQuantity.system.keyword",
                           ],
                           "lenient": true,
@@ -165,28 +165,28 @@ describe('quantityQuery', () => {
         test('le5.4|http://unitsofmeasure.org|mg with no keyword', () => {
             expect(quantityQuery(quantityParam, parseQuantitySearchValue('le5.4|http://unitsofmeasure.org|mg'), false))
                 .toMatchInlineSnapshot(`
-                Object {
-                  "bool": Object {
-                    "must": Array [
-                      Object {
-                        "range": Object {
-                          "valueQuantity.value": Object {
+                {
+                  "bool": {
+                    "must": [
+                      {
+                        "range": {
+                          "valueQuantity.value": {
                             "lte": 5.4,
                           },
                         },
                       },
-                      Object {
-                        "multi_match": Object {
-                          "fields": Array [
+                      {
+                        "multi_match": {
+                          "fields": [
                             "valueQuantity.code",
                           ],
                           "lenient": true,
                           "query": "mg",
                         },
                       },
-                      Object {
-                        "multi_match": Object {
-                          "fields": Array [
+                      {
+                        "multi_match": {
+                          "fields": [
                             "valueQuantity.system",
                           ],
                           "lenient": true,

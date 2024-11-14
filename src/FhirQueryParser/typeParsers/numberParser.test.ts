@@ -5,15 +5,15 @@
  */
 
 import each from 'jest-each';
-import { InvalidSearchParameterError } from 'fhir-works-on-aws-interface';
+import { InvalidSearchParameterError } from '@ascentms/fhir-works-on-aws-interface';
 import { parseNumberSearchValue } from './numberParser';
 
 describe('parseNumberSearchValue', () => {
     describe('valid inputs', () => {
         test('10', () => {
             expect(parseNumberSearchValue('10')).toMatchInlineSnapshot(`
-                Object {
-                  "implicitRange": Object {
+                {
+                  "implicitRange": {
                     "end": 10.5,
                     "start": 9.5,
                   },
@@ -24,8 +24,8 @@ describe('parseNumberSearchValue', () => {
         });
         test('lt10', () => {
             expect(parseNumberSearchValue('lt10')).toMatchInlineSnapshot(`
-                Object {
-                  "implicitRange": Object {
+                {
+                  "implicitRange": {
                     "end": 10.5,
                     "start": 9.5,
                   },
@@ -36,8 +36,8 @@ describe('parseNumberSearchValue', () => {
         });
         test('10.57', () => {
             expect(parseNumberSearchValue('10.57')).toMatchInlineSnapshot(`
-                Object {
-                  "implicitRange": Object {
+                {
+                  "implicitRange": {
                     "end": 10.575000000000001,
                     "start": 10.565,
                   },
@@ -48,8 +48,8 @@ describe('parseNumberSearchValue', () => {
         });
         test('-8.2', () => {
             expect(parseNumberSearchValue('-8.2')).toMatchInlineSnapshot(`
-                Object {
-                  "implicitRange": Object {
+                {
+                  "implicitRange": {
                     "end": -8.149999999999999,
                     "start": -8.25,
                   },
@@ -60,8 +60,8 @@ describe('parseNumberSearchValue', () => {
         });
         test('ge8e-1', () => {
             expect(parseNumberSearchValue('8e-1')).toMatchInlineSnapshot(`
-                Object {
-                  "implicitRange": Object {
+                {
+                  "implicitRange": {
                     "end": 0.8500000000000001,
                     "start": 0.75,
                   },

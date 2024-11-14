@@ -14,12 +14,12 @@ describe('tokenQuery', () => {
     test('system|code', () => {
         expect(tokenQuery(identifierParam, parseTokenSearchValue('http://acme.org/patient|2345'), true))
             .toMatchInlineSnapshot(`
-            Object {
-              "bool": Object {
-                "must": Array [
-                  Object {
-                    "multi_match": Object {
-                      "fields": Array [
+            {
+              "bool": {
+                "must": [
+                  {
+                    "multi_match": {
+                      "fields": [
                         "identifier.system.keyword",
                         "identifier.coding.system.keyword",
                       ],
@@ -27,9 +27,9 @@ describe('tokenQuery', () => {
                       "query": "http://acme.org/patient",
                     },
                   },
-                  Object {
-                    "multi_match": Object {
-                      "fields": Array [
+                  {
+                    "multi_match": {
+                      "fields": [
                         "identifier.code.keyword",
                         "identifier.coding.code.keyword",
                         "identifier.value.keyword",
@@ -48,9 +48,9 @@ describe('tokenQuery', () => {
     test('system|', () => {
         expect(tokenQuery(identifierParam, parseTokenSearchValue('http://acme.org/patient'), true))
             .toMatchInlineSnapshot(`
-            Object {
-              "multi_match": Object {
-                "fields": Array [
+            {
+              "multi_match": {
+                "fields": [
                   "identifier.code.keyword",
                   "identifier.coding.code.keyword",
                   "identifier.value.keyword",
@@ -65,12 +65,12 @@ describe('tokenQuery', () => {
     });
     test('|code', () => {
         expect(tokenQuery(identifierParam, parseTokenSearchValue('|2345'), true)).toMatchInlineSnapshot(`
-            Object {
-              "bool": Object {
-                "must": Array [
-                  Object {
-                    "multi_match": Object {
-                      "fields": Array [
+            {
+              "bool": {
+                "must": [
+                  {
+                    "multi_match": {
+                      "fields": [
                         "identifier.code.keyword",
                         "identifier.coding.code.keyword",
                         "identifier.value.keyword",
@@ -81,10 +81,10 @@ describe('tokenQuery', () => {
                       "query": "2345",
                     },
                   },
-                  Object {
-                    "bool": Object {
-                      "must_not": Object {
-                        "exists": Object {
+                  {
+                    "bool": {
+                      "must_not": {
+                        "exists": {
                           "field": "identifier.system",
                         },
                       },
@@ -98,12 +98,12 @@ describe('tokenQuery', () => {
     test('code', () => {
         expect(tokenQuery(identifierParam, parseTokenSearchValue('http://acme.org/patient|2345'), true))
             .toMatchInlineSnapshot(`
-            Object {
-              "bool": Object {
-                "must": Array [
-                  Object {
-                    "multi_match": Object {
-                      "fields": Array [
+            {
+              "bool": {
+                "must": [
+                  {
+                    "multi_match": {
+                      "fields": [
                         "identifier.system.keyword",
                         "identifier.coding.system.keyword",
                       ],
@@ -111,9 +111,9 @@ describe('tokenQuery', () => {
                       "query": "http://acme.org/patient",
                     },
                   },
-                  Object {
-                    "multi_match": Object {
-                      "fields": Array [
+                  {
+                    "multi_match": {
+                      "fields": [
                         "identifier.code.keyword",
                         "identifier.coding.code.keyword",
                         "identifier.value.keyword",
@@ -132,12 +132,12 @@ describe('tokenQuery', () => {
     test('code; without keyword', () => {
         expect(tokenQuery(identifierParam, parseTokenSearchValue('http://acme.org/patient|2345'), false))
             .toMatchInlineSnapshot(`
-            Object {
-              "bool": Object {
-                "must": Array [
-                  Object {
-                    "multi_match": Object {
-                      "fields": Array [
+            {
+              "bool": {
+                "must": [
+                  {
+                    "multi_match": {
+                      "fields": [
                         "identifier.system",
                         "identifier.coding.system",
                       ],
@@ -145,9 +145,9 @@ describe('tokenQuery', () => {
                       "query": "http://acme.org/patient",
                     },
                   },
-                  Object {
-                    "multi_match": Object {
-                      "fields": Array [
+                  {
+                    "multi_match": {
+                      "fields": [
                         "identifier.code",
                         "identifier.coding.code",
                         "identifier.value",
@@ -164,9 +164,9 @@ describe('tokenQuery', () => {
     });
     test('boolean', () => {
         expect(tokenQuery(identifierParam, parseTokenSearchValue('true'), true)).toMatchInlineSnapshot(`
-            Object {
-              "multi_match": Object {
-                "fields": Array [
+            {
+              "multi_match": {
+                "fields": [
                   "identifier.code.keyword",
                   "identifier.coding.code.keyword",
                   "identifier.value.keyword",

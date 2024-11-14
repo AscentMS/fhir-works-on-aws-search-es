@@ -5,16 +5,16 @@
  */
 
 import each from 'jest-each';
-import { InvalidSearchParameterError } from 'fhir-works-on-aws-interface';
+import { InvalidSearchParameterError } from '@ascentms/fhir-works-on-aws-interface';
 import { parseQuantitySearchValue } from './quantityParser';
 
 describe('parseQuantitySearchValue', () => {
     describe('valid inputs', () => {
         test('5.4|http://unitsofmeasure.org|mg', () => {
             expect(parseQuantitySearchValue('5.4|http://unitsofmeasure.org|mg')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "code": "mg",
-                  "implicitRange": Object {
+                  "implicitRange": {
                     "end": 5.45,
                     "start": 5.3500000000000005,
                   },
@@ -26,9 +26,9 @@ describe('parseQuantitySearchValue', () => {
         });
         test('5.40e-3|http://unitsofmeasure.org|g', () => {
             expect(parseQuantitySearchValue('5.40e-3|http://unitsofmeasure.org|g')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "code": "g",
-                  "implicitRange": Object {
+                  "implicitRange": {
                     "end": 0.005405,
                     "start": 0.0053950000000000005,
                   },
@@ -40,9 +40,9 @@ describe('parseQuantitySearchValue', () => {
         });
         test('5.4||mg', () => {
             expect(parseQuantitySearchValue('5.4||mg')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "code": "mg",
-                  "implicitRange": Object {
+                  "implicitRange": {
                     "end": 5.45,
                     "start": 5.3500000000000005,
                   },
@@ -54,9 +54,9 @@ describe('parseQuantitySearchValue', () => {
         });
         test('5.4', () => {
             expect(parseQuantitySearchValue('5.4')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "code": "",
-                  "implicitRange": Object {
+                  "implicitRange": {
                     "end": 5.45,
                     "start": 5.3500000000000005,
                   },
@@ -68,9 +68,9 @@ describe('parseQuantitySearchValue', () => {
         });
         test('le5.4|http://unitsofmeasure.org|mg', () => {
             expect(parseQuantitySearchValue('le5.4|http://unitsofmeasure.org|mg')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "code": "mg",
-                  "implicitRange": Object {
+                  "implicitRange": {
                     "end": 5.45,
                     "start": 5.3500000000000005,
                   },
@@ -82,9 +82,9 @@ describe('parseQuantitySearchValue', () => {
         });
         test('le5.4|http://unitsofmeasure.org|mg with no keyword', () => {
             expect(parseQuantitySearchValue('le5.4|http://unitsofmeasure.org|mg')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "code": "mg",
-                  "implicitRange": Object {
+                  "implicitRange": {
                     "end": 5.45,
                     "start": 5.3500000000000005,
                   },

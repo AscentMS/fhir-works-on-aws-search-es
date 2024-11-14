@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`compareNumberToRange "ap" 1`] = `
-Array [
+[
   "(10) ap (8, 9) is false",
   "(10) ap (9, 10) is true",
   "(10) ap (9, 11) is true",
@@ -11,7 +11,7 @@ Array [
 `;
 
 exports[`compareNumberToRange "eb" 1`] = `
-Array [
+[
   "(10) eb (8, 9) is false",
   "(10) eb (9, 10) is false",
   "(10) eb (9, 11) is false",
@@ -21,7 +21,7 @@ Array [
 `;
 
 exports[`compareNumberToRange "eq" 1`] = `
-Array [
+[
   "(10) eq (8, 9) is false",
   "(10) eq (9, 10) is true",
   "(10) eq (9, 11) is true",
@@ -31,7 +31,7 @@ Array [
 `;
 
 exports[`compareNumberToRange "ge" 1`] = `
-Array [
+[
   "(10) ge (8, 9) is true",
   "(10) ge (9, 10) is true",
   "(10) ge (9, 11) is true",
@@ -41,7 +41,7 @@ Array [
 `;
 
 exports[`compareNumberToRange "gt" 1`] = `
-Array [
+[
   "(10) gt (8, 9) is true",
   "(10) gt (9, 10) is true",
   "(10) gt (9, 11) is true",
@@ -51,7 +51,7 @@ Array [
 `;
 
 exports[`compareNumberToRange "le" 1`] = `
-Array [
+[
   "(10) le (8, 9) is false",
   "(10) le (9, 10) is true",
   "(10) le (9, 11) is true",
@@ -61,7 +61,7 @@ Array [
 `;
 
 exports[`compareNumberToRange "lt" 1`] = `
-Array [
+[
   "(10) lt (8, 9) is false",
   "(10) lt (9, 10) is false",
   "(10) lt (9, 11) is true",
@@ -71,7 +71,7 @@ Array [
 `;
 
 exports[`compareNumberToRange "ne" 1`] = `
-Array [
+[
   "(10) ne (8, 9) is true",
   "(10) ne (9, 10) is false",
   "(10) ne (9, 11) is false",
@@ -81,7 +81,7 @@ Array [
 `;
 
 exports[`compareNumberToRange "sa" 1`] = `
-Array [
+[
   "(10) sa (8, 9) is true",
   "(10) sa (9, 10) is false",
   "(10) sa (9, 11) is false",
@@ -91,7 +91,7 @@ Array [
 `;
 
 exports[`compareRanges "ap" 1`] = `
-Array [
+[
   "(10, 20) ap (8, 9) is false",
   "(10, 20) ap (9, 10) is true",
   "(10, 20) ap (9, 15) is true",
@@ -109,7 +109,7 @@ Array [
 `;
 
 exports[`compareRanges "eb" 1`] = `
-Array [
+[
   "(10, 20) eb (8, 9) is false",
   "(10, 20) eb (9, 10) is false",
   "(10, 20) eb (9, 15) is false",
@@ -127,7 +127,7 @@ Array [
 `;
 
 exports[`compareRanges "eq" 1`] = `
-Array [
+[
   "(10, 20) eq (8, 9) is false",
   "(10, 20) eq (9, 10) is false",
   "(10, 20) eq (9, 15) is false",
@@ -145,7 +145,7 @@ Array [
 `;
 
 exports[`compareRanges "ge" 1`] = `
-Array [
+[
   "(10, 20) ge (8, 9) is true",
   "(10, 20) ge (9, 10) is true",
   "(10, 20) ge (9, 15) is true",
@@ -163,7 +163,7 @@ Array [
 `;
 
 exports[`compareRanges "gt" 1`] = `
-Array [
+[
   "(10, 20) gt (8, 9) is true",
   "(10, 20) gt (9, 10) is true",
   "(10, 20) gt (9, 15) is true",
@@ -181,7 +181,7 @@ Array [
 `;
 
 exports[`compareRanges "le" 1`] = `
-Array [
+[
   "(10, 20) le (8, 9) is false",
   "(10, 20) le (9, 10) is true",
   "(10, 20) le (9, 15) is true",
@@ -199,7 +199,7 @@ Array [
 `;
 
 exports[`compareRanges "lt" 1`] = `
-Array [
+[
   "(10, 20) lt (8, 9) is false",
   "(10, 20) lt (9, 10) is true",
   "(10, 20) lt (9, 15) is true",
@@ -217,7 +217,7 @@ Array [
 `;
 
 exports[`compareRanges "ne" 1`] = `
-Array [
+[
   "(10, 20) ne (8, 9) is true",
   "(10, 20) ne (9, 10) is true",
   "(10, 20) ne (9, 15) is true",
@@ -235,7 +235,7 @@ Array [
 `;
 
 exports[`compareRanges "sa" 1`] = `
-Array [
+[
   "(10, 20) sa (8, 9) is true",
   "(10, 20) sa (9, 10) is false",
   "(10, 20) sa (9, 15) is false",

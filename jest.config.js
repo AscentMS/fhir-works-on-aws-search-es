@@ -2,6 +2,7 @@
 process.env.TZ = 'UTC';
 
 module.exports = {
+    collectCoverage: true,
     moduleFileExtensions: ['ts', 'js'],
     transform: {
         '\\.(ts)$': 'ts-jest',

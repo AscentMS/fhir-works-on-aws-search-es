@@ -3,7 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { InvalidSearchParameterError } from 'fhir-works-on-aws-interface';
+import { InvalidSearchParameterError } from '@ascentms/fhir-works-on-aws-interface';
 import { referenceQuery } from './referenceQuery';
 import { FHIRSearchParametersRegistry } from '../../FHIRSearchParametersRegistry';
 import { parseReferenceSearchValue } from '../../FhirQueryParser/typeParsers/referenceParser';
@@ -24,9 +24,9 @@ describe('referenceQuery', () => {
                     [],
                 ),
             ).toMatchInlineSnapshot(`
-                              Object {
-                                "terms": Object {
-                                  "managingOrganization.reference.keyword": Array [
+                              {
+                                "terms": {
+                                  "managingOrganization.reference.keyword": [
                                     "Organization/111",
                                     "https://base-url.com/Organization/111",
                                   ],
@@ -44,9 +44,9 @@ describe('referenceQuery', () => {
                     'organization',
                 ),
             ).toMatchInlineSnapshot(`
-                              Object {
-                                "terms": Object {
-                                  "managingOrganization.reference": Array [
+                              {
+                                "terms": {
+                                  "managingOrganization.reference": [
                                     "Organization/111",
                                     "https://base-url.com/Organization/111",
                                   ],
@@ -69,9 +69,9 @@ describe('referenceQuery', () => {
                     'organization',
                 ),
             ).toMatchInlineSnapshot(`
-                Object {
-                  "terms": Object {
-                    "managingOrganization.reference.keyword": Array [
+                {
+                  "terms": {
+                    "managingOrganization.reference.keyword": [
                       "Organization/111",
                       "https://base-url.com/Organization/111",
                     ],
@@ -92,9 +92,9 @@ describe('referenceQuery', () => {
                     'organization',
                 ),
             ).toMatchInlineSnapshot(`
-                              Object {
-                                "terms": Object {
-                                  "managingOrganization.reference.keyword": Array [
+                              {
+                                "terms": {
+                                  "managingOrganization.reference.keyword": [
                                     "http://notMatching.com/baseR4/Organization/111",
                                   ],
                                 },
@@ -114,9 +114,9 @@ describe('referenceQuery', () => {
                     ['Organization'],
                 ),
             ).toMatchInlineSnapshot(`
-                              Object {
-                                "terms": Object {
-                                  "managingOrganization.reference.keyword": Array [
+                              {
+                                "terms": {
+                                  "managingOrganization.reference.keyword": [
                                     "https://base-url.com/Organization/organizationId",
                                     "Organization/organizationId",
                                   ],
@@ -138,9 +138,9 @@ describe('referenceQuery', () => {
                     ['Organization', 'Group'],
                 ),
             ).toMatchInlineSnapshot(`
-                              Object {
-                                "terms": Object {
-                                  "managingOrganization.reference.keyword": Array [
+                              {
+                                "terms": {
+                                  "managingOrganization.reference.keyword": [
                                     "https://base-url.com/Organization/organizationId",
                                     "Organization/organizationId",
                                     "https://base-url.com/Group/organizationId",
@@ -187,9 +187,9 @@ describe('referenceQuery', () => {
                 ['Organization', 'Group'],
             ),
         ).toMatchInlineSnapshot(`
-          Object {
-            "terms": Object {
-              "managingOrganization.reference.keyword": Array [
+          {
+            "terms": {
+              "managingOrganization.reference.keyword": [
                 "this:does# not match",
               ],
             },

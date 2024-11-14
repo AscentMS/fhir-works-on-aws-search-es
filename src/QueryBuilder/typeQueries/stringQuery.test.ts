@@ -14,9 +14,9 @@ const givenParam = fhirSearchParametersRegistry.getSearchParameter('Patient', 'g
 describe('stringQuery', () => {
     test('simple value', () => {
         expect(stringQuery(nameParam, 'Robert Bell')).toMatchInlineSnapshot(`
-            Object {
-              "multi_match": Object {
-                "fields": Array [
+            {
+              "multi_match": {
+                "fields": [
                   "name",
                   "name.*",
                 ],
@@ -28,37 +28,37 @@ describe('stringQuery', () => {
     });
     test('simple value; with forward slash', () => {
         expect(stringQuery(nameParam, 'Robert/Bobby Bell')).toMatchInlineSnapshot(`
-            Object {
-              "multi_match": Object {
-                "fields": Array [
+            {
+              "multi_match": {
+                "fields": [
                   "name",
                   "name.*",
                 ],
                 "lenient": true,
-                "query": "Robert\\\\/Bobby Bell",
+                "query": "Robert\\/Bobby Bell",
               },
             }
         `);
     });
     test('simple value; with backwards slash', () => {
         expect(stringQuery(nameParam, 'Robert\\Bobby Bell')).toMatchInlineSnapshot(`
-            Object {
-              "multi_match": Object {
-                "fields": Array [
+            {
+              "multi_match": {
+                "fields": [
                   "name",
                   "name.*",
                 ],
                 "lenient": true,
-                "query": "Robert\\\\Bobby Bell",
+                "query": "Robert\\Bobby Bell",
               },
             }
         `);
     });
     test('simple value; with characters', () => {
         expect(stringQuery(nameParam, '平仮名')).toMatchInlineSnapshot(`
-            Object {
-              "multi_match": Object {
-                "fields": Array [
+            {
+              "multi_match": {
+                "fields": [
                   "name",
                   "name.*",
                 ],
@@ -73,9 +73,9 @@ describe('stringQuery', () => {
         describe(':exact', () => {
             test('simple value', () => {
                 expect(stringQuery(nameParam, 'Robert Bell', 'exact')).toMatchInlineSnapshot(`
-                      Object {
-                        "multi_match": Object {
-                          "fields": Array [
+                      {
+                        "multi_match": {
+                          "fields": [
                             "name.keyword",
                             "name.*.keyword",
                           ],
@@ -87,9 +87,9 @@ describe('stringQuery', () => {
             });
             test('simple value withcase differences', () => {
                 expect(stringQuery(nameParam, 'RoBeRt BeLL', 'exact')).toMatchInlineSnapshot(`
-                      Object {
-                        "multi_match": Object {
-                          "fields": Array [
+                      {
+                        "multi_match": {
+                          "fields": [
                             "name.keyword",
                             "name.*.keyword",
                           ],
@@ -104,9 +104,9 @@ describe('stringQuery', () => {
         describe(':contains', () => {
             test('simple parameter', () => {
                 expect(stringQuery(givenParam, 'anne', 'contains')).toMatchInlineSnapshot(`
-                                Object {
-                                  "wildcard": Object {
-                                    "name.given": Object {
+                                {
+                                  "wildcard": {
+                                    "name.given": {
                                       "value": "*anne*",
                                     },
                                   },
@@ -116,47 +116,47 @@ describe('stringQuery', () => {
 
             test('name parameter', () => {
                 expect(stringQuery(nameParam, 'anne', 'contains')).toMatchInlineSnapshot(`
-                    Object {
-                      "bool": Object {
-                        "should": Array [
-                          Object {
-                            "wildcard": Object {
-                              "name": Object {
+                    {
+                      "bool": {
+                        "should": [
+                          {
+                            "wildcard": {
+                              "name": {
                                 "value": "*anne*",
                               },
                             },
                           },
-                          Object {
-                            "wildcard": Object {
-                              "name.family": Object {
+                          {
+                            "wildcard": {
+                              "name.family": {
                                 "value": "*anne*",
                               },
                             },
                           },
-                          Object {
-                            "wildcard": Object {
-                              "name.given": Object {
+                          {
+                            "wildcard": {
+                              "name.given": {
                                 "value": "*anne*",
                               },
                             },
                           },
-                          Object {
-                            "wildcard": Object {
-                              "name.text": Object {
+                          {
+                            "wildcard": {
+                              "name.text": {
                                 "value": "*anne*",
                               },
                             },
                           },
-                          Object {
-                            "wildcard": Object {
-                              "name.prefix": Object {
+                          {
+                            "wildcard": {
+                              "name.prefix": {
                                 "value": "*anne*",
                               },
                             },
                           },
-                          Object {
-                            "wildcard": Object {
-                              "name.suffix": Object {
+                          {
+                            "wildcard": {
+                              "name.suffix": {
                                 "value": "*anne*",
                               },
                             },
@@ -169,61 +169,61 @@ describe('stringQuery', () => {
 
             test('address parameter', () => {
                 expect(stringQuery(addressParam, 'new', 'contains')).toMatchInlineSnapshot(`
-                    Object {
-                      "bool": Object {
-                        "should": Array [
-                          Object {
-                            "wildcard": Object {
-                              "address": Object {
+                    {
+                      "bool": {
+                        "should": [
+                          {
+                            "wildcard": {
+                              "address": {
                                 "value": "*new*",
                               },
                             },
                           },
-                          Object {
-                            "wildcard": Object {
-                              "address.city": Object {
+                          {
+                            "wildcard": {
+                              "address.city": {
                                 "value": "*new*",
                               },
                             },
                           },
-                          Object {
-                            "wildcard": Object {
-                              "address.country": Object {
+                          {
+                            "wildcard": {
+                              "address.country": {
                                 "value": "*new*",
                               },
                             },
                           },
-                          Object {
-                            "wildcard": Object {
-                              "address.district": Object {
+                          {
+                            "wildcard": {
+                              "address.district": {
                                 "value": "*new*",
                               },
                             },
                           },
-                          Object {
-                            "wildcard": Object {
-                              "address.line": Object {
+                          {
+                            "wildcard": {
+                              "address.line": {
                                 "value": "*new*",
                               },
                             },
                           },
-                          Object {
-                            "wildcard": Object {
-                              "address.postalCode": Object {
+                          {
+                            "wildcard": {
+                              "address.postalCode": {
                                 "value": "*new*",
                               },
                             },
                           },
-                          Object {
-                            "wildcard": Object {
-                              "address.state": Object {
+                          {
+                            "wildcard": {
+                              "address.state": {
                                 "value": "*new*",
                               },
                             },
                           },
-                          Object {
-                            "wildcard": Object {
-                              "address.text": Object {
+                          {
+                            "wildcard": {
+                              "address.text": {
                                 "value": "*new*",
                               },
                             },

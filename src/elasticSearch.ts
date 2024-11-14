@@ -3,26 +3,26 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import AWS from 'aws-sdk';
-import { Client } from '@elastic/elasticsearch';
-// @ts-ignore
-import { AmazonConnection, AmazonTransport } from 'aws-elasticsearch-connector';
+import { defaultProvider } from '@aws-sdk/credential-provider-node';
+import { Client } from '@opensearch-project/opensearch';
+import { AwsSigv4Signer } from '@opensearch-project/opensearch/aws';
 
 const { IS_OFFLINE } = process.env;
 
 let esDomainEndpoint = process.env.ELASTICSEARCH_DOMAIN_ENDPOINT || 'https://fake-es-endpoint.com';
-if (IS_OFFLINE === 'true') {
-    AWS.config.update({
-        region: process.env.AWS_REGION || 'us-west-2',
-        accessKeyId: process.env.ACCESS_KEY,
-        secretAccessKey: process.env.SECRET_KEY,
-    });
+if (IS_OFFLINE && IS_OFFLINE === 'true') {
     esDomainEndpoint = process.env.OFFLINE_ELASTICSEARCH_DOMAIN_ENDPOINT || 'https://fake-es-endpoint.com';
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export const ElasticSearch = new Client({
-    node: esDomainEndpoint,
-    Connection: AmazonConnection,
-    Transport: AmazonTransport,
+export const OpensearchClient = new Client({
+    ...AwsSigv4Signer({
+        region: process.env.AWS_REGION || 'eu-west-2',
+        service: 'es',
+        getCredentials: () => {
+            const credentialsProvider = defaultProvider();
+            return credentialsProvider();
+        },
+    }),
+    node: esDomainEndpoint
 });

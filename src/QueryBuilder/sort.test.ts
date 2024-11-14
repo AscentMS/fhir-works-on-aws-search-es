@@ -3,7 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { InvalidSearchParameterError } from 'fhir-works-on-aws-interface';
+import { InvalidSearchParameterError } from '@ascentms/fhir-works-on-aws-interface';
 import { buildSortClause, parseSortParameter } from './sort';
 import { FHIRSearchParametersRegistry } from '../FHIRSearchParametersRegistry';
 
@@ -12,16 +12,16 @@ const fhirSearchParametersRegistry = new FHIRSearchParametersRegistry('4.0.1');
 describe('parseSortParameter', () => {
     test('status,-date,category', () => {
         expect(parseSortParameter('status,-date,category')).toMatchInlineSnapshot(`
-            Array [
-              Object {
+            [
+              {
                 "order": "asc",
                 "searchParam": "status",
               },
-              Object {
+              {
                 "order": "desc",
                 "searchParam": "date",
               },
-              Object {
+              {
                 "order": "asc",
                 "searchParam": "category",
               },
@@ -34,27 +34,27 @@ describe('buildSortClause', () => {
     test('valid date params', () => {
         expect(buildSortClause(fhirSearchParametersRegistry, 'Patient', '-_lastUpdated,birthdate'))
             .toMatchInlineSnapshot(`
-            Array [
-              Object {
-                "meta.lastUpdated": Object {
+            [
+              {
+                "meta.lastUpdated": {
                   "order": "desc",
                   "unmapped_type": "long",
                 },
               },
-              Object {
-                "meta.lastUpdated.end": Object {
+              {
+                "meta.lastUpdated.end": {
                   "order": "desc",
                   "unmapped_type": "long",
                 },
               },
-              Object {
-                "birthDate": Object {
+              {
+                "birthDate": {
                   "order": "asc",
                   "unmapped_type": "long",
                 },
               },
-              Object {
-                "birthDate.start": Object {
+              {
+                "birthDate.start": {
                   "order": "asc",
                   "unmapped_type": "long",
                 },

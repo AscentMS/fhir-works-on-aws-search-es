@@ -35,11 +35,11 @@ describe('FHIRSearchParametersRegistry', () => {
 
             const fhirSearchParametersRegistry = new FHIRSearchParametersRegistry('4.0.1', IGCompiledSearchParams);
             expect(fhirSearchParametersRegistry.getSearchParameter('Patient', 'race')).toMatchInlineSnapshot(`
-                            Object {
+                            {
                               "base": "Patient",
-                              "compiled": Array [
-                                Object {
-                                  "condition": Array [
+                              "compiled": [
+                                {
+                                  "condition": [
                                     "extension.url",
                                     "=",
                                     "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
@@ -81,7 +81,7 @@ describe('FHIRSearchParametersRegistry', () => {
             const fhirSearchParametersRegistry = new FHIRSearchParametersRegistry('4.0.1', IGCompiledSearchParams);
             expect(fhirSearchParametersRegistry.getCapabilities().Patient.searchParam.find((x) => x.name === 'race'))
                 .toMatchInlineSnapshot(`
-                Object {
+                {
                   "definition": "http://hl7.org/fhir/us/core/SearchParameter/us-core-race",
                   "documentation": "Returns patients with a race extension matching the specified code.",
                   "name": "race",
@@ -109,10 +109,10 @@ describe('FHIRSearchParametersRegistry', () => {
 
             const fhirSearchParametersRegistry = new FHIRSearchParametersRegistry('4.0.1', IGCompiledSearchParams);
             expect(fhirSearchParametersRegistry.getSearchParameter('Patient', 'given')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "base": "Patient",
-                  "compiled": Array [
-                    Object {
+                  "compiled": [
+                    {
                       "path": "name.given",
                       "resourceType": "Patient",
                     },
@@ -126,8 +126,8 @@ describe('FHIRSearchParametersRegistry', () => {
 
             expect(fhirSearchParametersRegistry.getCapabilities().Patient.searchParam.filter((s) => s.name === 'given'))
                 .toMatchInlineSnapshot(`
-                Array [
-                  Object {
+                [
+                  {
                     "definition": "http://hl7.org/fhir/us/core/SearchParameter/us-core-patient-given",
                     "documentation": "a long us core description",
                     "name": "given",
@@ -156,10 +156,10 @@ describe('FHIRSearchParametersRegistry', () => {
 
             const fhirSearchParametersRegistry = new FHIRSearchParametersRegistry('4.0.1', IGCompiledSearchParams);
             expect(fhirSearchParametersRegistry.getSearchParameter('Patient', '_id')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "base": "Patient",
-                  "compiled": Array [
-                    Object {
+                  "compiled": [
+                    {
                       "path": "id",
                       "resourceType": "Patient",
                     },
@@ -173,8 +173,8 @@ describe('FHIRSearchParametersRegistry', () => {
 
             expect(fhirSearchParametersRegistry.getCapabilities().Patient.searchParam.filter((s) => s.name === '_id'))
                 .toMatchInlineSnapshot(`
-                Array [
-                  Object {
+                [
+                  {
                     "definition": "http://hl7.org/fhir/us/core/SearchParameter/us-core-patient-id",
                     "documentation": "a long us core description",
                     "name": "_id",

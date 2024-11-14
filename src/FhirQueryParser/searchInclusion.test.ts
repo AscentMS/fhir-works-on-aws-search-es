@@ -1,5 +1,5 @@
 import each from 'jest-each';
-import { InvalidSearchParameterError } from 'fhir-works-on-aws-interface';
+import { InvalidSearchParameterError } from '@ascentms/fhir-works-on-aws-interface';
 import { inclusionParameterFromString, parseInclusionParams } from './searchInclusion';
 import { FHIRSearchParametersRegistry } from '../FHIRSearchParametersRegistry';
 import { InclusionSearchParameter, WildcardInclusionSearchParameter } from '../searchInclusions';

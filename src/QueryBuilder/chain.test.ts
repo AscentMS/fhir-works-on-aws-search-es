@@ -3,7 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { InvalidSearchParameterError } from 'fhir-works-on-aws-interface';
+import { InvalidSearchParameterError } from '@ascentms/fhir-works-on-aws-interface';
 import parseChainedParameters, { getUniqueTarget } from './chain';
 import { FHIRSearchParametersRegistry, SearchParam } from '../FHIRSearchParametersRegistry';
 
@@ -16,23 +16,23 @@ describe('parseChainedParameters', () => {
                 'general-practitioner:PractitionerRole.organization.name': 'HL7',
             }),
         ).toMatchInlineSnapshot(`
-            Array [
-              Object {
-                "chain": Array [
-                  Object {
+            [
+              {
+                "chain": [
+                  {
                     "resourceType": "Organization",
                     "searchParam": "name",
                   },
-                  Object {
+                  {
                     "resourceType": "PractitionerRole",
                     "searchParam": "organization",
                   },
-                  Object {
+                  {
                     "resourceType": "Patient",
                     "searchParam": "general-practitioner",
                   },
                 ],
-                "initialValue": Array [
+                "initialValue": [
                   "HL7",
                 ],
               },
@@ -44,19 +44,19 @@ describe('parseChainedParameters', () => {
                 'link:Patient.birthdate': 'gt2021-10-01',
             }),
         ).toMatchInlineSnapshot(`
-            Array [
-              Object {
-                "chain": Array [
-                  Object {
+            [
+              {
+                "chain": [
+                  {
                     "resourceType": "Patient",
                     "searchParam": "birthdate",
                   },
-                  Object {
+                  {
                     "resourceType": "Patient",
                     "searchParam": "link",
                   },
                 ],
-                "initialValue": Array [
+                "initialValue": [
                   "gt2021-10-01",
                 ],
               },
@@ -100,19 +100,19 @@ describe('parseChainedParameters', () => {
                 'patient.identifier': '2.16.840.1.113883.3.1579|8889154591540',
             }),
         ).toMatchInlineSnapshot(`
-          Array [
-            Object {
-              "chain": Array [
-                Object {
+          [
+            {
+              "chain": [
+                {
                   "resourceType": "Patient",
                   "searchParam": "identifier",
                 },
-                Object {
+                {
                   "resourceType": "DocumentReference",
                   "searchParam": "patient",
                 },
               ],
-              "initialValue": Array [
+              "initialValue": [
                 "2.16.840.1.113883.3.1579|8889154591540",
               ],
             },

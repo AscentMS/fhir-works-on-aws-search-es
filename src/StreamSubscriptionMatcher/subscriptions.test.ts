@@ -47,8 +47,8 @@ describe('filterOutIneligibleResources', () => {
 
     test('good event', () => {
         expect(filterOutIneligibleResources(dynamoDBStreamEvent())).toMatchInlineSnapshot(`
-            Array [
-              Object {
+            [
+              {
                 "documentStatus": "AVAILABLE",
                 "id": "b75eef29-4d3b-4454-ba27-6436e55d6a29",
                 "resourceType": "Patient",
@@ -62,13 +62,13 @@ describe('filterOutIneligibleResources', () => {
         test('REMOVE event name', () => {
             const event = dynamoDBStreamEvent();
             event.Records[0].eventName = 'REMOVE';
-            expect(filterOutIneligibleResources(event)).toMatchInlineSnapshot(`Array []`);
+            expect(filterOutIneligibleResources(event)).toMatchInlineSnapshot(`[]`);
         });
 
         test('documentStatus is not active', () => {
             const event = dynamoDBStreamEvent();
             event.Records[0].dynamodb!.NewImage!.documentStatus.S = 'LOCKED';
-            expect(filterOutIneligibleResources(event)).toMatchInlineSnapshot(`Array []`);
+            expect(filterOutIneligibleResources(event)).toMatchInlineSnapshot(`[]`);
         });
     });
 });
@@ -96,14 +96,14 @@ describe('buildNotification', () => {
         );
 
         expect(notification).toMatchInlineSnapshot(`
-            Object {
-              "channelHeader": Array [
+            {
+              "channelHeader": [
                 "SomeHeader: token-abc-123",
               ],
               "channelPayload": "application/fhir+json",
               "channelType": "rest-hook",
               "endpoint": "https://endpoint.com",
-              "matchedResource": Object {
+              "matchedResource": {
                 "id": "222",
                 "lastUpdated": "2021-10-08T12:37:44.998Z",
                 "resourceType": "DocumentReference",
@@ -139,14 +139,14 @@ describe('buildNotification', () => {
         );
 
         expect(notification).toMatchInlineSnapshot(`
-            Object {
-              "channelHeader": Array [
+            {
+              "channelHeader": [
                 "SomeHeader: token-abc-123",
               ],
               "channelPayload": "application/fhir+json",
               "channelType": "rest-hook",
               "endpoint": "https://endpoint.com",
-              "matchedResource": Object {
+              "matchedResource": {
                 "id": "222",
                 "lastUpdated": "2021-10-08T12:37:44.998Z",
                 "resourceType": "DocumentReference",
@@ -190,16 +190,16 @@ describe('parseSubscription', () => {
                 new FHIRSearchParametersRegistry('4.0.1'),
             ),
         ).toMatchInlineSnapshot(`
-            Object {
-              "channelHeader": Array [
+            {
+              "channelHeader": [
                 "SomeHeader: token-abc-123",
               ],
               "channelPayload": "application/fhir+json",
               "channelType": "rest-hook",
               "endpoint": "https://biliwatch.com/customers/mount-auburn-miu/on-result",
-              "parsedCriteria": Object {
+              "parsedCriteria": {
                 "resourceType": "Observation",
-                "searchParams": Array [],
+                "searchParams": [],
               },
               "subscriptionId": "example",
               "tenantId": undefined,

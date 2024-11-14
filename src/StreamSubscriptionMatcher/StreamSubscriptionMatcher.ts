@@ -6,10 +6,10 @@
 
 import { DynamoDBStreamEvent } from 'aws-lambda/trigger/dynamodb-stream';
 import { chunk } from 'lodash';
-import { FhirVersion, Persistence } from 'fhir-works-on-aws-interface';
+import { FhirVersion, Persistence } from '@ascentms/fhir-works-on-aws-interface';
 import { v4 } from 'uuid';
 import { SNSClient, PublishBatchCommand } from '@aws-sdk/client-sns';
-import { NodeHttpHandler } from '@aws-sdk/node-http-handler';
+import { NodeHttpHandler } from '@smithy/node-http-handler';
 import https from 'https';
 import { captureAWSv3Client } from 'aws-xray-sdk';
 import {

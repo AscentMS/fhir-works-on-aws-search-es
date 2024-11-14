@@ -4,7 +4,7 @@
  *
  */
 
-import { InvalidSearchParameterError } from 'fhir-works-on-aws-interface';
+import { InvalidSearchParameterError } from '@ascentms/fhir-works-on-aws-interface';
 import { FHIRSearchParametersRegistry } from '../FHIRSearchParametersRegistry';
 
 interface SortParameter {

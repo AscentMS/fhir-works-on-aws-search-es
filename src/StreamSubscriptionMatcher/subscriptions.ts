@@ -1,8 +1,9 @@
 import { DynamoDBRecord, DynamoDBStreamEvent } from 'aws-lambda/trigger/dynamodb-stream';
-import AWS from 'aws-sdk';
 import { FHIRSearchParametersRegistry } from '../FHIRSearchParametersRegistry';
 import { ParsedFhirQueryParams, parseQueryString } from '../FhirQueryParser';
 import getComponentLogger from '../loggerBuilder';
+import { unmarshall } from '@aws-sdk/util-dynamodb';
+import { AttributeValue } from '@aws-sdk/client-dynamodb';
 
 const logger = getComponentLogger();
 
@@ -56,7 +57,7 @@ const isCreateOrUpdate = (dynamoDBRecord: DynamoDBRecord): boolean => {
 };
 
 export const filterOutIneligibleResources = (dynamoDBStreamEvent: DynamoDBStreamEvent): Record<string, any>[] => {
-    return dynamoDBStreamEvent.Records.flatMap((dynamoDbRecord) => {
+    return dynamoDBStreamEvent.Records.flatMap((dynamoDbRecord: DynamoDBRecord) => {
         if (!isCreateOrUpdate(dynamoDbRecord)) {
             // Subscriptions never match deleted resources
             return [];
@@ -67,7 +68,7 @@ export const filterOutIneligibleResources = (dynamoDBStreamEvent: DynamoDBStream
             );
             return [];
         }
-        const resource = AWS.DynamoDB.Converter.unmarshall(dynamoDbRecord.dynamodb.NewImage);
+        const resource = unmarshall(dynamoDbRecord.dynamodb.NewImage as Record<string, AttributeValue>);
 
         if (resource.documentStatus !== 'AVAILABLE') {
             return [];

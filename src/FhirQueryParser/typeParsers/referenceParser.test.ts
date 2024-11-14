@@ -3,7 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { InvalidSearchParameterError } from 'fhir-works-on-aws-interface';
+import { InvalidSearchParameterError } from '@ascentms/fhir-works-on-aws-interface';
 import { parseReferenceSearchValue } from './referenceParser';
 
 const referenceParam = {
@@ -16,7 +16,7 @@ describe('parseReferenceSearchValue', () => {
     describe('searching with {type}/{id}', () => {
         test('valid param', () => {
             expect(parseReferenceSearchValue(referenceParam, 'Organization/111')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "id": "111",
                   "referenceType": "relative",
                   "resourceType": "Organization",
@@ -28,7 +28,7 @@ describe('parseReferenceSearchValue', () => {
         test('valid param', () => {
             expect(parseReferenceSearchValue(referenceParam, 'https://base-url.com/Organization/111'))
                 .toMatchInlineSnapshot(`
-                Object {
+                {
                   "fhirServiceBaseUrl": "https://base-url.com",
                   "id": "111",
                   "referenceType": "url",
@@ -40,7 +40,7 @@ describe('parseReferenceSearchValue', () => {
     describe('searching with just {id}', () => {
         test('one target type found', () => {
             expect(parseReferenceSearchValue(referenceParam, 'organizationId')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "id": "organizationId",
                   "referenceType": "idOnly",
                 }
@@ -49,7 +49,7 @@ describe('parseReferenceSearchValue', () => {
         test('many target types found', () => {
             expect(parseReferenceSearchValue({ ...referenceParam, target: ['A', 'B'] }, 'organizationId'))
                 .toMatchInlineSnapshot(`
-                Object {
+                {
                   "id": "organizationId",
                   "referenceType": "idOnly",
                 }
@@ -66,7 +66,7 @@ describe('parseReferenceSearchValue', () => {
     });
     test('search value is not an URL nor has the format <resourceType>/<id>', () => {
         expect(parseReferenceSearchValue(referenceParam, 'this:does# not match')).toMatchInlineSnapshot(`
-            Object {
+            {
               "rawValue": "this:does# not match",
               "referenceType": "unparseable",
             }

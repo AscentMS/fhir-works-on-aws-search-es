@@ -3,7 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { ImplementationGuides } from 'fhir-works-on-aws-interface';
+import { ImplementationGuides } from '@ascentms/fhir-works-on-aws-interface';
 import { Parser, Grammar } from 'nearley';
 import { uniqBy } from 'lodash';
 import fhirPathGrammar from './reducedFHIRPath';

@@ -13,19 +13,19 @@ describe('queryParser', () => {
     test('string with modifier', () => {
         const q = parseQuery(fhirSearchParametersRegistry, 'Patient', { 'name:exact': 'John' });
         expect(q).toMatchInlineSnapshot(`
-            Object {
+            {
               "resourceType": "Patient",
-              "searchParams": Array [
-                Object {
+              "searchParams": [
+                {
                   "modifier": "exact",
                   "name": "name",
-                  "parsedSearchValues": Array [
+                  "parsedSearchValues": [
                     "John",
                   ],
-                  "searchParam": Object {
+                  "searchParam": {
                     "base": "Patient",
-                    "compiled": Array [
-                      Object {
+                    "compiled": [
+                      {
                         "path": "name",
                         "resourceType": "Patient",
                       },
@@ -51,20 +51,20 @@ describe('queryParser', () => {
     test('string OR', () => {
         const q = parseQuery(fhirSearchParametersRegistry, 'Patient', { 'name:exact': 'John,Anna' });
         expect(q).toMatchInlineSnapshot(`
-            Object {
+            {
               "resourceType": "Patient",
-              "searchParams": Array [
-                Object {
+              "searchParams": [
+                {
                   "modifier": "exact",
                   "name": "name",
-                  "parsedSearchValues": Array [
+                  "parsedSearchValues": [
                     "John",
                     "Anna",
                   ],
-                  "searchParam": Object {
+                  "searchParam": {
                     "base": "Patient",
-                    "compiled": Array [
-                      Object {
+                    "compiled": [
+                      {
                         "path": "name",
                         "resourceType": "Patient",
                       },
@@ -84,19 +84,19 @@ describe('queryParser', () => {
     test('string AND', () => {
         const q = parseQuery(fhirSearchParametersRegistry, 'Patient', { 'name:exact': ['John', 'Anna'] });
         expect(q).toMatchInlineSnapshot(`
-            Object {
+            {
               "resourceType": "Patient",
-              "searchParams": Array [
-                Object {
+              "searchParams": [
+                {
                   "modifier": "exact",
                   "name": "name",
-                  "parsedSearchValues": Array [
+                  "parsedSearchValues": [
                     "John",
                   ],
-                  "searchParam": Object {
+                  "searchParam": {
                     "base": "Patient",
-                    "compiled": Array [
-                      Object {
+                    "compiled": [
+                      {
                         "path": "name",
                         "resourceType": "Patient",
                       },
@@ -108,16 +108,16 @@ describe('queryParser', () => {
                   },
                   "type": "string",
                 },
-                Object {
+                {
                   "modifier": "exact",
                   "name": "name",
-                  "parsedSearchValues": Array [
+                  "parsedSearchValues": [
                     "Anna",
                   ],
-                  "searchParam": Object {
+                  "searchParam": {
                     "base": "Patient",
-                    "compiled": Array [
-                      Object {
+                    "compiled": [
+                      {
                         "path": "name",
                         "resourceType": "Patient",
                       },
@@ -137,15 +137,15 @@ describe('queryParser', () => {
     test('number', () => {
         const q = parseQuery(fhirSearchParametersRegistry, 'ChargeItem', { 'factor-override': '10' });
         expect(q).toMatchInlineSnapshot(`
-            Object {
+            {
               "resourceType": "ChargeItem",
-              "searchParams": Array [
-                Object {
+              "searchParams": [
+                {
                   "modifier": undefined,
                   "name": "factor-override",
-                  "parsedSearchValues": Array [
-                    Object {
-                      "implicitRange": Object {
+                  "parsedSearchValues": [
+                    {
+                      "implicitRange": {
                         "end": 10.5,
                         "start": 9.5,
                       },
@@ -153,10 +153,10 @@ describe('queryParser', () => {
                       "prefix": "eq",
                     },
                   ],
-                  "searchParam": Object {
+                  "searchParam": {
                     "base": "ChargeItem",
-                    "compiled": Array [
-                      Object {
+                    "compiled": [
+                      {
                         "path": "factorOverride",
                         "resourceType": "ChargeItem",
                       },
@@ -176,25 +176,25 @@ describe('queryParser', () => {
     test('date', () => {
         const q = parseQuery(fhirSearchParametersRegistry, 'Patient', { birthdate: '1999-09-09' });
         expect(q).toMatchInlineSnapshot(`
-            Object {
+            {
               "resourceType": "Patient",
-              "searchParams": Array [
-                Object {
+              "searchParams": [
+                {
                   "modifier": undefined,
                   "name": "birthdate",
-                  "parsedSearchValues": Array [
-                    Object {
+                  "parsedSearchValues": [
+                    {
                       "prefix": "eq",
-                      "range": Object {
+                      "range": {
                         "end": 1999-09-09T23:59:59.999Z,
                         "start": 1999-09-09T00:00:00.000Z,
                       },
                     },
                   ],
-                  "searchParam": Object {
+                  "searchParam": {
                     "base": "Patient",
-                    "compiled": Array [
-                      Object {
+                    "compiled": [
+                      {
                         "path": "birthDate",
                         "resourceType": "Patient",
                       },
@@ -221,16 +221,16 @@ describe('queryParser', () => {
             'value-quantity': '5.4|http://unitsofmeasure.org|mg',
         });
         expect(q).toMatchInlineSnapshot(`
-            Object {
+            {
               "resourceType": "Observation",
-              "searchParams": Array [
-                Object {
+              "searchParams": [
+                {
                   "modifier": undefined,
                   "name": "value-quantity",
-                  "parsedSearchValues": Array [
-                    Object {
+                  "parsedSearchValues": [
+                    {
                       "code": "mg",
-                      "implicitRange": Object {
+                      "implicitRange": {
                         "end": 5.45,
                         "start": 5.3500000000000005,
                       },
@@ -239,50 +239,50 @@ describe('queryParser', () => {
                       "system": "http://unitsofmeasure.org",
                     },
                   ],
-                  "searchParam": Object {
+                  "searchParam": {
                     "base": "Observation",
-                    "compiled": Array [
-                      Object {
+                    "compiled": [
+                      {
                         "path": "valueQuantity",
                         "resourceType": "Observation",
                       },
-                      Object {
+                      {
                         "path": "valueSampledData",
                         "resourceType": "Observation",
                       },
-                      Object {
+                      {
                         "path": "valueCodeableConcept",
                         "resourceType": "Observation",
                       },
-                      Object {
+                      {
                         "path": "valueString",
                         "resourceType": "Observation",
                       },
-                      Object {
+                      {
                         "path": "valueBoolean",
                         "resourceType": "Observation",
                       },
-                      Object {
+                      {
                         "path": "valueInteger",
                         "resourceType": "Observation",
                       },
-                      Object {
+                      {
                         "path": "valueRange",
                         "resourceType": "Observation",
                       },
-                      Object {
+                      {
                         "path": "valueRatio",
                         "resourceType": "Observation",
                       },
-                      Object {
+                      {
                         "path": "valueTime",
                         "resourceType": "Observation",
                       },
-                      Object {
+                      {
                         "path": "valueDateTime",
                         "resourceType": "Observation",
                       },
-                      Object {
+                      {
                         "path": "valuePeriod",
                         "resourceType": "Observation",
                       },
@@ -302,23 +302,23 @@ describe('queryParser', () => {
     test('token', () => {
         const q = parseQuery(fhirSearchParametersRegistry, 'Patient', { identifier: 'http://acme.org/patient|2345' });
         expect(q).toMatchInlineSnapshot(`
-            Object {
+            {
               "resourceType": "Patient",
-              "searchParams": Array [
-                Object {
+              "searchParams": [
+                {
                   "modifier": undefined,
                   "name": "identifier",
-                  "parsedSearchValues": Array [
-                    Object {
+                  "parsedSearchValues": [
+                    {
                       "code": "2345",
                       "explicitNoSystemProperty": false,
                       "system": "http://acme.org/patient",
                     },
                   ],
-                  "searchParam": Object {
+                  "searchParam": {
                     "base": "Patient",
-                    "compiled": Array [
-                      Object {
+                    "compiled": [
+                      {
                         "path": "identifier",
                         "resourceType": "Patient",
                       },
@@ -340,14 +340,14 @@ describe('queryParser', () => {
             'subject.name': 'DiagnosticReport?subject.name=peter',
         });
         expect(q).toMatchInlineSnapshot(`
-            Object {
-              "chainedSearchParams": Object {
-                "subject.name": Array [
+            {
+              "chainedSearchParams": {
+                "subject.name": [
                   "DiagnosticReport?subject.name=peter",
                 ],
               },
               "resourceType": "DiagnosticReport",
-              "searchParams": Array [],
+              "searchParams": [],
             }
         `);
     });
@@ -358,9 +358,9 @@ describe('queryParser', () => {
             _revinclude: 'Provenance:target',
         });
         expect(q).toMatchInlineSnapshot(`
-            Object {
-              "inclusionSearchParams": Array [
-                Object {
+            {
+              "inclusionSearchParams": [
+                {
                   "isWildcard": false,
                   "path": "subject",
                   "searchParameter": "patient",
@@ -368,7 +368,7 @@ describe('queryParser', () => {
                   "targetResourceType": undefined,
                   "type": "_include",
                 },
-                Object {
+                {
                   "isWildcard": false,
                   "path": "target",
                   "searchParameter": "target",
@@ -378,7 +378,7 @@ describe('queryParser', () => {
                 },
               ],
               "resourceType": "MedicationRequest",
-              "searchParams": Array [],
+              "searchParams": [],
             }
         `);
     });
@@ -389,17 +389,17 @@ describe('queryParser', () => {
             _sort: '_lastUpdated',
         });
         expect(q).toMatchInlineSnapshot(`
-            Object {
-              "otherParams": Object {
-                "_count": Array [
+            {
+              "otherParams": {
+                "_count": [
                   "10",
                 ],
-                "_sort": Array [
+                "_sort": [
                   "_lastUpdated",
                 ],
               },
               "resourceType": "Patient",
-              "searchParams": Array [],
+              "searchParams": [],
             }
         `);
     });

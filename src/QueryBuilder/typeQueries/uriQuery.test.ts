@@ -18,9 +18,9 @@ describe('uriQuery', () => {
                 true,
             ),
         ).toMatchInlineSnapshot(`
-            Object {
-              "multi_match": Object {
-                "fields": Array [
+            {
+              "multi_match": {
+                "fields": [
                   "meta.profile.keyword",
                 ],
                 "lenient": true,
@@ -37,9 +37,9 @@ describe('uriQuery', () => {
                 false,
             ),
         ).toMatchInlineSnapshot(`
-            Object {
-              "multi_match": Object {
-                "fields": Array [
+            {
+              "multi_match": {
+                "fields": [
                   "meta.profile",
                 ],
                 "lenient": true,

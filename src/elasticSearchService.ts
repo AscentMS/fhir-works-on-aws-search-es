@@ -3,11 +3,6 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-/* eslint-disable no-underscore-dangle */
-import URL from 'url';
-
-import { ResponseError } from '@elastic/elasticsearch/lib/errors';
-import { partition, merge, isEmpty } from 'lodash';
 import {
     Search,
     TypeSearchRequest,
@@ -18,9 +13,13 @@ import {
     SearchFilter,
     FhirVersion,
     InvalidSearchParameterError,
-} from 'fhir-works-on-aws-interface';
-import { Client, RequestParams } from '@elastic/elasticsearch';
-import { ElasticSearch } from './elasticSearch';
+} from '@ascentms/fhir-works-on-aws-interface';
+import { Client, RequestParams } from '@opensearch-project/opensearch';
+import { ResponseError } from '@opensearch-project/opensearch/lib/errors';
+import { partition, merge, isEmpty } from 'lodash';
+import URL from 'url';
+
+import { OpensearchClient } from './elasticSearch';
 import {
     DEFAULT_SEARCH_RESULTS_PER_PAGE,
     SEARCH_PAGINATION_PARAMS,
@@ -94,7 +93,7 @@ export class ElasticSearchService implements Search {
         },
         fhirVersion: FhirVersion = '4.0.1',
         compiledImplementationGuides?: any,
-        esClient: Client = ElasticSearch,
+        esClient: Client = OpensearchClient,
         {
             enableMultiTenancy = false,
             useKeywordSubFields = true,

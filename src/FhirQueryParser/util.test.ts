@@ -8,7 +8,7 @@ import { parseSearchModifiers } from './util';
 describe('getSearchModifiers', () => {
     test('name:exact', () => {
         expect(parseSearchModifiers('name:exact')).toMatchInlineSnapshot(`
-        Object {
+        {
           "modifier": "exact",
           "parameterName": "name",
         }
@@ -17,7 +17,7 @@ describe('getSearchModifiers', () => {
 
     test('name', () => {
         expect(parseSearchModifiers('name')).toMatchInlineSnapshot(`
-            Object {
+            {
               "modifier": undefined,
               "parameterName": "name",
             }
@@ -26,7 +26,7 @@ describe('getSearchModifiers', () => {
 
     test('name:contains', () => {
         expect(parseSearchModifiers('name:contains')).toMatchInlineSnapshot(`
-        Object {
+        {
           "modifier": "contains",
           "parameterName": "name",
         }
@@ -35,7 +35,7 @@ describe('getSearchModifiers', () => {
 
     test('name:', () => {
         expect(parseSearchModifiers('name:')).toMatchInlineSnapshot(`
-        Object {
+        {
           "modifier": "",
           "parameterName": "name",
         }

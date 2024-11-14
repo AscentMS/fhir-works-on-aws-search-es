@@ -4,7 +4,7 @@
  */
 
 import each from 'jest-each';
-import { InvalidSearchParameterError } from 'fhir-works-on-aws-interface';
+import { InvalidSearchParameterError } from '@ascentms/fhir-works-on-aws-interface';
 import { parseNumber } from './number';
 
 describe('parseNumber', () => {

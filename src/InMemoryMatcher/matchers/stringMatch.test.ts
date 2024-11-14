@@ -30,7 +30,7 @@ describe('stringMatch', () => {
     test('unsupported modifier', () => {
         expect(() =>
             stringMatch(COMPILED_SEARCH_PARAM, 'hello', 'hello', 'unknownModifier'),
-        ).toThrowErrorMatchingInlineSnapshot(`"The modifier \\":unknownModifier\\" is not supported"`);
+        ).toThrowErrorMatchingInlineSnapshot(`"The modifier \":unknownModifier\" is not supported"`);
     });
 
     test('not a string', () => {

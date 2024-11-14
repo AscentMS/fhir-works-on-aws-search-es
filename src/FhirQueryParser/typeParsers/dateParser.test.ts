@@ -5,16 +5,16 @@
  */
 
 import each from 'jest-each';
-import { InvalidSearchParameterError } from 'fhir-works-on-aws-interface';
+import { InvalidSearchParameterError } from '@ascentms/fhir-works-on-aws-interface';
 import { parseDateSearchValue } from './dateParser';
 
 describe('parseDateSearchValue', () => {
     describe('valid inputs', () => {
         test('YYYY', () => {
             expect(parseDateSearchValue('2020')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "prefix": "eq",
-                  "range": Object {
+                  "range": {
                     "end": 2020-12-31T23:59:59.999Z,
                     "start": 2020-01-01T00:00:00.000Z,
                   },
@@ -23,9 +23,9 @@ describe('parseDateSearchValue', () => {
         });
         test('YYYY-MM', () => {
             expect(parseDateSearchValue('2020-02')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "prefix": "eq",
-                  "range": Object {
+                  "range": {
                     "end": 2020-02-29T23:59:59.999Z,
                     "start": 2020-02-01T00:00:00.000Z,
                   },
@@ -34,9 +34,9 @@ describe('parseDateSearchValue', () => {
         });
         test('YYYY-MM-DD', () => {
             expect(parseDateSearchValue('2020-02-02')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "prefix": "eq",
-                  "range": Object {
+                  "range": {
                     "end": 2020-02-02T23:59:59.999Z,
                     "start": 2020-02-02T00:00:00.000Z,
                   },
@@ -45,9 +45,9 @@ describe('parseDateSearchValue', () => {
         });
         test('YYYY-MM-DDT:hh:mm', () => {
             expect(parseDateSearchValue('2020-02-02T07:07')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "prefix": "eq",
-                  "range": Object {
+                  "range": {
                     "end": 2020-02-02T07:07:59.999Z,
                     "start": 2020-02-02T07:07:00.000Z,
                   },
@@ -56,9 +56,9 @@ describe('parseDateSearchValue', () => {
         });
         test('YYYY-MM-DDT:hh:mm:ss', () => {
             expect(parseDateSearchValue('2020-02-02T07:07:07')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "prefix": "eq",
-                  "range": Object {
+                  "range": {
                     "end": 2020-02-02T07:07:07.999Z,
                     "start": 2020-02-02T07:07:07.000Z,
                   },
@@ -67,9 +67,9 @@ describe('parseDateSearchValue', () => {
         });
         test('YYYY-MM-DDT:hh:mm:ss.sss', () => {
             expect(parseDateSearchValue('2020-02-02T07:07:07.777')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "prefix": "eq",
-                  "range": Object {
+                  "range": {
                     "end": 2020-02-02T07:07:07.777Z,
                     "start": 2020-02-02T07:07:07.777Z,
                   },
@@ -78,9 +78,9 @@ describe('parseDateSearchValue', () => {
         });
         test('YYYY-MM-DDT:hh:mm:ssZ', () => {
             expect(parseDateSearchValue('2020-02-02T07:07:07Z')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "prefix": "eq",
-                  "range": Object {
+                  "range": {
                     "end": 2020-02-02T07:07:07.999Z,
                     "start": 2020-02-02T07:07:07.000Z,
                   },
@@ -89,9 +89,9 @@ describe('parseDateSearchValue', () => {
         });
         test('YYYY-MM-DDT:hh:mm:ss+hh:mm', () => {
             expect(parseDateSearchValue('2020-02-02T07:07:07+07:00')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "prefix": "eq",
-                  "range": Object {
+                  "range": {
                     "end": 2020-02-02T00:07:07.999Z,
                     "start": 2020-02-02T00:07:07.000Z,
                   },

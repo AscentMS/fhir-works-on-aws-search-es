@@ -4,14 +4,14 @@
  *
  */
 
-import { InvalidSearchParameterError } from 'fhir-works-on-aws-interface';
+import { InvalidSearchParameterError } from '@ascentms/fhir-works-on-aws-interface';
 import { parseTokenSearchValue } from './tokenParser';
 
 describe('parseTokenSearchValue', () => {
     describe('valid inputs', () => {
         test('code', () => {
             expect(parseTokenSearchValue('code')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "code": "code",
                   "explicitNoSystemProperty": false,
                   "system": undefined,
@@ -20,7 +20,7 @@ describe('parseTokenSearchValue', () => {
         });
         test('system|code', () => {
             expect(parseTokenSearchValue('system|code')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "code": "code",
                   "explicitNoSystemProperty": false,
                   "system": "system",
@@ -29,7 +29,7 @@ describe('parseTokenSearchValue', () => {
         });
         test('|code', () => {
             expect(parseTokenSearchValue('|code')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "code": "code",
                   "explicitNoSystemProperty": true,
                   "system": undefined,
@@ -38,7 +38,7 @@ describe('parseTokenSearchValue', () => {
         });
         test('system|', () => {
             expect(parseTokenSearchValue('system|')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "code": undefined,
                   "explicitNoSystemProperty": false,
                   "system": "system",
@@ -47,7 +47,7 @@ describe('parseTokenSearchValue', () => {
         });
         test('http://acme.org/patient|2345', () => {
             expect(parseTokenSearchValue('http://acme.org/patient|2345')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "code": "2345",
                   "explicitNoSystemProperty": false,
                   "system": "http://acme.org/patient",
@@ -56,7 +56,7 @@ describe('parseTokenSearchValue', () => {
         });
         test('empty string', () => {
             expect(parseTokenSearchValue('')).toMatchInlineSnapshot(`
-                Object {
+                {
                   "code": "",
                   "explicitNoSystemProperty": false,
                   "system": undefined,
