@@ -15,8 +15,7 @@ import {
     FhirVersion,
     InvalidSearchParameterError,
 } from '@ascentms/fhir-works-on-aws-interface';
-import { Client, RequestParams } from '@opensearch-project/opensearch';
-import { ResponseError } from '@opensearch-project/opensearch/lib/errors';
+import { Client, errors, RequestParams } from '@opensearch-project/opensearch';
 import { partition, merge, isEmpty } from 'lodash';
 import URL from 'url';
 
@@ -358,7 +357,7 @@ export class ElasticSearchService implements Search {
             };
         } catch (error) {
             // Indexes are created the first time a resource of a given type is written to DDB.
-            if (error instanceof ResponseError && error.meta.body.error.type === 'index_not_found_exception') {
+            if ((error instanceof errors.ResponseError) && (error.meta.body.error.type === 'index_not_found_exception')) {
                 logger.info(
                     `Search index for ${getAliasName(
                         searchQuery.resourceType,
